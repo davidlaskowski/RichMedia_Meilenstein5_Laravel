@@ -65,7 +65,11 @@ class GradeController extends Controller {
         {
             $userArray[$user->id] = $user->lastname.', '.$user->firstname;
         }
-        return view('grades.edit')->with('grade', $grade)->with("courseArray",$courseArray)->with('userArray',$userArray);
+
+        $gradeArray = array('1.0'=>'1.0', '1.3'=>'1.3', '1.7'=>'1.7', '2.0'=>'2.0', '2.3'=>'2.3', '2.7'=>'2.7', '3.0'=>'3.0', '3.3'=>'3.3', '3.7'=>'3.7', '4.0'=>'4.0', '5.0'=>'5.0');
+        
+
+        return view('grades.edit')->with('grade', $grade)->with("courseArray",$courseArray)->with('userArray',$userArray)->with('gradeArray',$gradeArray);
     }
 
     /**

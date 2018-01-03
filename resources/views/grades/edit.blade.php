@@ -32,7 +32,7 @@
     <div class="form-group{{ $errors->has('grade') ? ' has-error' : '' }}">
         {!! Form::label('grade', 'Note') !!}
 
-            {!! Form::text('grade', null, array('class'=>'form-control', 'placeholder'=>'Note')) !!}
+            {!! Form::select('grade', $gradeArray, null, array('class'=>'form-control', 'placeholder'=>'Note')) !!}
 
             @if ($errors->has('grade'))
                 <span class="help-block">
