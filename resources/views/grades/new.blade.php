@@ -3,6 +3,19 @@
 @section('content')
 {!! Form::open(array('url'=>'grades/new')) !!}
     <h2 class="form-signup-heading">Note hinzufügen</h2>
+
+    <div class="form-group{{ $errors->has('grade') ? ' has-error' : '' }}">
+        {!! Form::label('grade', 'Note') !!}
+
+            {!! Form::select('grade', $gradeArray, null, array('class'=>'form-control')) !!}
+
+            @if ($errors->has('grade'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('grade') }}</strong>
+                </span>
+            @endif
+        
+    </div>
     <div class="form-group{{ $errors->has('course_id') ? ' has-error' : '' }}">
         {!! Form::label('course_id', 'Kurs') !!}
 
@@ -29,18 +42,7 @@
         
     </div>
 
-    <div class="form-group{{ $errors->has('grade') ? ' has-error' : '' }}">
-        {!! Form::label('grade', 'Note') !!}
-
-            {!! Form::select('grade', $gradeArray, null, array('class'=>'form-control')) !!}
-
-            @if ($errors->has('grade'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('grade') }}</strong>
-                </span>
-            @endif
-        
-    </div>
+    
 
     <br/>
     {!! Form::submit('Speichern', array('class'=>'btn btn-large btn-primary btn-block'))!!}

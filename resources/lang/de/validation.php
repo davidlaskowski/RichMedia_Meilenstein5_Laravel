@@ -129,7 +129,8 @@ return [
         'time_from' => 'Zeit von',
         'time_to' => 'Zeit bis',
         'day' => 'Tag',
-        'lending_type' => 'Annahme/Ausgabe'
+        'lending_type' => 'Annahme/Ausgabe',
+        'semester_id' => 'Semester'
     ],
 
 ];

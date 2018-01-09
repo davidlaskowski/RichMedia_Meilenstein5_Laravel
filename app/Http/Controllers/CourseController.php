@@ -14,8 +14,8 @@ class CourseController extends Controller {
 	 /**
      * index-Action
      */
-    public function getIndex()
-    {
+     public function getIndex()
+     {
         $courses = Course::paginate(20);
         return view('courses.index')->with('courses', $courses);
     }
@@ -23,8 +23,8 @@ class CourseController extends Controller {
      /**
      * show-Action
      */
-    public function getShow($id = 0)
-    {
+     public function getShow($id = 0)
+     {
         $course = Course::find($id);
         return view('courses.show')->with('course', $course);
     }
@@ -47,15 +47,15 @@ class CourseController extends Controller {
         $course = Course::find($id);
         $rules = Course::$rules;
 
-                $validator = Validator::make(Request::all(), $rules);
- 
+        $validator = Validator::make(Request::all(), $rules);
+
         if ($validator->passes()) 
         {
-        $course->semester_id = Request::input('semester_id');
-        $course->title = Request::input('title');
+            $course->semester_id = Request::input('semester_id');
+            $course->title = Request::input('title');
 
             $course->save();
-         
+
             return redirect('courses/index')->with('message', 'success|Kurs wurde erfolgreich gespeichert!');
         }
         else{
@@ -82,7 +82,7 @@ class CourseController extends Controller {
     public function getNew()
     {
         $semesters = Semester::orderBy('name', 'DESC')->get();
-        $semesterArray[0] = '--- bitte wählen ---';
+        $semesterArray[null] = '--- bitte wählen ---';
         foreach($semesters as $semester)
         {
             $semesterArray[$semester->id] = $semester->title;
@@ -98,23 +98,23 @@ class CourseController extends Controller {
      */
     public function postNew()
     {
-		$validator = Validator::make(Request::all(), Course::$rules);
- 
-    	if ($validator->passes()) 
-    	{
+      $validator = Validator::make(Request::all(), Course::$rules);
+
+      if ($validator->passes()) 
+      {
         	// validation has passed, save user in DB
-        	$course = new Course;
-		    $course->title = Request::input('title');
-            $course->semester_id = Request:: input('semester_id');
-		    $course->save();
-		 
-		    return redirect('courses')->with('message', 'success|Kurs erfolgreich angelegt!');
-    	} 
-    	else 
-    	{
+       $course = new Course;
+       $course->title = Request::input('title');
+       $course->semester_id = Request::input('semester_id');
+       $course->save();
+
+       return redirect('courses')->with('message', 'success|Kurs erfolgreich angelegt!');
+   } 
+   else 
+   {
         	// validation has failed, display error messages   
-        	return redirect('courses/new')->with('message', 'danger|Die folgenden Fehler sind aufgetreten:')->withErrors($validator)->withInput();
-    	}
-    }
+       return redirect('courses/new')->with('message', 'danger|Die folgenden Fehler sind aufgetreten:')->withErrors($validator)->withInput();
+   }
+}
 
 }

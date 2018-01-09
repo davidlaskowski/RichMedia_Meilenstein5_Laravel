@@ -47,7 +47,7 @@ class GradeController extends Controller {
         $semesters = Semester::orderBy('name', 'DESC')->get();
         $courses = Course::all();
         $courseArray = array();
-        $courseArray[0] = '--- bitte wählen ---';
+        $courseArray[null] = '--- bitte wählen ---';
         foreach($semesters as $semester)
         {
             $courseArray[$semester->title] = array();
@@ -60,7 +60,7 @@ class GradeController extends Controller {
 
         $users = User::orderBy('lastname, firstname', 'ASC')->get();
         $userArray = array();
-        $userArray[0] = '--- bitte wählen ---';
+        $userArray[null] = '--- bitte wählen ---';
         foreach($users as $user)
         {
             $userArray[$user->id] = $user->lastname.', '.$user->firstname;

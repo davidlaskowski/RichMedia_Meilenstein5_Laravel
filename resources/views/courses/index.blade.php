@@ -21,7 +21,7 @@
 			@foreach($courses as $course)
 			<tr>
 				<td>{!! $course->title !!}</td>
-				<td>{!! $course->semester->title !!}</td>
+				<td> @if( $course->semester ) {!! $course->semester->title !!} @endif</td>
 				<td><div class="btn-group">{!! Html::link('/courses/show/'.$course->id, 'Ansehen', array('class'=>'btn btn-default')) !!}{!! Html::link('/courses/edit/'.$course->id, 'Bearbeiten', array('class'=>'btn btn-default')) !!}{!! Html::link('/courses/delete/'.$course->id, 'Löschen', array('class'=>'btn btn-default', 'onClick'=>'return confirm(\'Wirklich löschen?\');')) !!}</div></td>
 			</tr>
 			@endforeach

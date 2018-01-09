@@ -26,7 +26,7 @@
             <tbody>
                 @foreach($user->grades as $grade)
                 <tr>
-                    <td>{{ $grade->course->title }}</td>
+                    <td>@if($grade->course){{ $grade->course->title }}@endif</td>
                     <td>{{ $grade->grade }}</td>
                 </tr>
                 @endforeach
@@ -37,40 +37,6 @@
             </tbody>
         </table>
     </div>
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 
 {!! Html::link('#', 'Zurück', array('class' => 'btn btn-default', 'onClick="javascript:history.back();return false;"')) !!}
 @stop

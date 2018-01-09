@@ -25,7 +25,7 @@
 				<td>{!! $grade->grade !!}</td>
 				<td>{!! $grade->user->firstname !!}</td>
 				<td>{!! $grade->user->lastname !!}</td>
-				<td>{!! $grade->course->title !!}</td>
+				<td>@if($grade->course) {!! $grade->course->title !!} @endif</td>
 
 				<td><div class="btn-group">{!! Html::link('/grades/show/'.$grade->id, 'Ansehen', array('class'=>'btn btn-default')) !!}{!! Html::link('/grades/edit/'.$grade->id, 'Bearbeiten', array('class'=>'btn btn-default')) !!}{!! Html::link('/grades/delete/'.$grade->id, 'Löschen', array('class'=>'btn btn-default', 'onClick'=>'return confirm(\'Wirklich löschen?\');')) !!}</div></td>
 			</tr>

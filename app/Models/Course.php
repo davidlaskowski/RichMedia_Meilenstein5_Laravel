@@ -25,6 +25,7 @@ class Course extends Model {
     }
     
 	public static $rules = array(
-	    'title'=>'required'
+	    'title'=>'required',
+        'semester_id' => 'required|numeric|min:1'
     );
 }
